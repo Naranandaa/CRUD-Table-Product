@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <div class="container">
+                        <div class="row">
+                <div class="col-6">
+                    <h1>Table Products</h1>
+                    <!-- Buttonnya Create Product -->
+                    <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Create Product
+                    </button>     
+                </div>
+                
+                <table class="table table-hover">
+                    <tr>
+                        <th>Code</th>
+                        <th>Product name</th>
+                        <th>Stock</th>
+                        <th>Product image</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                                        <tr>
+                        <td>PC002</td>
+                        <td>Glasses</td>
+                        <td>20</td>
+                        <td><img src="http://127.0.0.1:8000/images/Barry white just the way you are.jpg" style="max-width:60px;"></td>
+                        <td>
+                            <a href="/product/2/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/product/2/delete" class="btn btn-danger btn-sm"onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>PC003</td>
+                        <td>T-Shirt</td>
+                        <td>15</td>
+                        <td><img src="http://127.0.0.1:8000/images/Screenshot (217).png" style="max-width:60px;"></td>
+                        <td>
+                            <a href="/product/3/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/product/3/delete" class="btn btn-danger btn-sm"onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>PC004</td>
+                        <td>Jacket</td>
+                        <td>8</td>
+                        <td><img src="http://127.0.0.1:8000/images/Screenshot (228).png" style="max-width:60px;"></td>
+                        <td>
+                            <a href="/product/4/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/product/4/delete" class="btn btn-danger btn-sm"onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>PC005</td>
+                        <td>Trouser</td>
+                        <td>23</td>
+                        <td><img src="http://127.0.0.1:8000/images/Screenshot (244).png" style="max-width:60px;"></td>
+                        <td>
+                            <a href="/product/5/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/product/5/delete" class="btn btn-danger btn-sm"onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>PC001</td>
+                        <td>Shirt</td>
+                        <td>19</td>
+                        <td><img src="http://127.0.0.1:8000/images/Screenshot (218).png" style="max-width:60px;"></td>
+                        <td>
+                            <a href="/product/10/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/product/10/delete" class="btn btn-danger btn-sm"onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                        </td>
+                    </tr>
+                                    </table>
+            </div>
+        </div>
+                    <!-- Pop upnya Create Product -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/product/create" method="POST">
+                                    <input type="hidden" name="_token" value="w2f4Qo16x2S14DGBJf5nF3FUzdxn2kN0EtuT5E06">
+                                    <div class="mb-3"> 
+                                        <label for="exampleInputEmail1" class="form-label">Product Code</label>
+                                        <input name="product_code" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Code">
+                                                                            </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Product Name</label>
+                                        <input name="product_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Name">
+                                                                            </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Stock</label>
+                                        <input name="stock" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Stock Number">
+                                                                            </div>
+                                    <div class="mb-3">
+                                        <label for="file">Product Image</label>
+                                        <input type="file" name="product_image" class="form-control" onchange="previewFile(this)"/>
+                                        <img id="previewimg" style="max-width: 130px;margin-top:20px"/>
+                                    </div>
+
+                            </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+</html>
